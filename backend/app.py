@@ -1,54 +1,87 @@
 from flask import Flask, request, jsonify
-from flask_sqlalchemy import SQLAlchemy
 from flask_cors import CORS
+import mysql.connector
+from mysql.connector import Error
+import hashlib
 
 app = Flask(__name__)
 CORS(app)
-app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///usecases.db'
-db = SQLAlchemy(app)
 
-class UseCase(db.Model):
-    id = db.Column(db.Integer, primary_key=True)
-    title = db.Column(db.String(100))
-    description = db.Column(db.Text)
-    business_owner = db.Column(db.String(100))
-    ai_model_name = db.Column(db.String(100))
-    use_case_category = db.Column(db.String(50))
-    business_area = db.Column(db.String(100))
-    risk_category = db.Column(db.String(20))
-    lifecycle_stage = db.Column(db.String(20))
-    kpis_impacted = db.Column(db.Text)
-    expected_benefits = db.Column(db.Text)
-    model_details = db.Column(db.Text)
+# Database config
+db_config = {
+    'host': 'localhost',
+    'database': 'Register_Web_App',
+    'user': 'root',
+    'password': 'root'  # Use your actual password
+}
 
-@app.route('/usecases', methods=['GET'])
-def get_usecases():
-    usecases = UseCase.query.all()
-    return jsonify([
-        {
-            "id": u.id,
-            "title": u.title,
-            "description": u.description,
-            "business_owner": u.business_owner,
-            "ai_model_name": u.ai_model_name,
-            "use_case_category": u.use_case_category,
-            "business_area": u.business_area,
-            "risk_category": u.risk_category,
-            "lifecycle_stage": u.lifecycle_stage,
-            "kpis_impacted": u.kpis_impacted,
-            "expected_benefits": u.expected_benefits,
-            "model_details": u.model_details,
-        } for u in usecases
-    ])
+def get_db_connection():
+    return mysql.connector.connect(**db_config)
 
-@app.route('/')
-def home():
-    return "Backend is working!"
+@app.route('/register', methods=['POST'])
+def register():
+    data = request.get_json()
+    username = data.get('username')
+    password = data.get('password')
 
-# Add POST, PUT, DELETE routes here
+    if not username or not password:
+        return jsonify({"message": "Username and password are required"}), 400
+
+    hashed_password = hashlib.sha256(password.encode()).hexdigest()
+
+    try:
+        conn = get_db_connection()
+        cursor = conn.cursor(dictionary=True)
+
+        cursor.execute("SELECT * FROM users WHERE username = %s", (username,))
+        if cursor.fetchone():
+            return jsonify({"message": "Username already exists"}), 409
+
+        cursor.execute("INSERT INTO users (username, password) VALUES (%s, %s)", (username, hashed_password))
+        conn.commit()
+
+        return jsonify({"message": "Registration successful"}), 201
+
+    except Error as e:
+        return jsonify({"message": "Database error", "error": str(e)}), 500
+
+    finally:
+        if cursor:
+            cursor.close()
+        if conn:
+            conn.close()
+
+@app.route('/login', methods=['POST'])
+def login():
+    data = request.get_json()
+    username = data.get('username')
+    password = data.get('password')
+
+    if not username or not password:
+        return jsonify({"message": "Username and password are required"}), 400
+
+    hashed_password = hashlib.sha256(password.encode()).hexdigest()
+
+    try:
+        conn = get_db_connection()
+        cursor = conn.cursor(dictionary=True)
+
+        cursor.execute("SELECT * FROM users WHERE username = %s AND password = %s", (username, hashed_password))
+        user = cursor.fetchone()
+
+        if user:
+            return jsonify({"message": "Login successful", "user": user}), 200
+        else:
+            return jsonify({"message": "Invalid credentials"}), 401
+
+    except Error as e:
+        return jsonify({"message": "Database error", "error": str(e)}), 500
+
+    finally:
+        if cursor:
+            cursor.close()
+        if conn:
+            conn.close()
 
 if __name__ == '__main__':
-    with app.app_context():
-        db.create_all()
     app.run(debug=True)
-
