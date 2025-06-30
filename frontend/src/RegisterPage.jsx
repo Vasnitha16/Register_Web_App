@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import './Login.css';
-import illustration from './assets/Login.png'; // Use same or different image
+import illustration from './assets/Login.png'; 
 
 function RegisterPage() {
   const [username, setUsername] = useState('');
@@ -29,7 +29,6 @@ function RegisterPage() {
     <div className="auth-wrapper">
       <div className="auth-left">
         <img src={illustration} alt="Illustration" />
-        <p>Create an account to get started</p>
       </div>
       <div className="auth-right">
         <h2 className="auth-title">Welcome!</h2>
@@ -55,7 +54,7 @@ function RegisterPage() {
         </form>
         <p className="auth-message">{message}</p>
         <div className="auth-footer">
-          Already have an account? <a href="/login">Login</a>
+          Already have an Account!! <a href="/login">Login</a>
         </div>
       </div>
     </div>

@@ -72,7 +72,9 @@ body, html {
   font-size: 16px;
   outline: none;
   background: transparent;
+  color: black;
 }
+
 
 .auth-input:focus {
   border-bottom: 2px solid #7e5bef;
@@ -96,14 +98,16 @@ body, html {
 
 /* Footer link */
 .auth-footer {
-  font-size: 14px;
+  font-size: 18px;
   text-align: center;
   margin-top: 12px;
+  color : black
 }
 
 .auth-footer a {
   color: #7e5bef;
   text-decoration: none;
+  font-size: 18px;
 }
 
 .auth-footer a:hover {

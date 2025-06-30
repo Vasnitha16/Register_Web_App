@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import './Login.css';
-import illustration from './assets/Login.png'; // ✅ your image file
+import illustration from './assets/Login.png'; 
 
 function LoginPage() {
   const [username, setUsername] = useState('');
