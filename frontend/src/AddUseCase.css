@@ -1,0 +1,99 @@
+.add-page {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: 'Segoe UI', sans-serif;
+  padding: 20px;
+}
+
+.add-card {
+  background-color: #1e1e3f;
+  color: white;
+  padding: 40px;
+  border-radius: 16px;
+  width: 100%;
+  max-width: 1400px;
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.2);
+}
+
+.add-card h2 {
+  text-align: center;
+  margin-bottom: 30px;
+  color: white;
+}
+
+.add-form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+/* Three columns per row */
+.form-row {
+  display: flex;
+  gap: 20px;
+  flex-wrap: nowrap;
+}
+
+/* Each field */
+.form-group {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+label {
+  font-weight: 600;
+  margin-bottom: 6px;
+}
+
+input,
+textarea {
+  padding: 10px;
+  font-size: 14px;
+  border-radius: 6px;
+  border: none;
+  outline: none;
+  background-color: #fff;
+  color: #333;
+}
+
+textarea {
+  resize: vertical;
+  min-height: 60px;
+  max-height: 100px;
+}
+
+/* Submit button */
+.add-form button {
+  margin-top: 10px;
+  padding: 12px;
+  background-color: #2ecc71;
+  border: none;
+  color: white;
+  font-weight: bold;
+  border-radius: 8px;
+  cursor: pointer;
+  width: 100%;
+  transition: background 0.3s ease;
+}
+
+.add-form button:disabled {
+  background-color: #a8dadc;
+  cursor: not-allowed;
+}
+
+.add-form button:hover:not(:disabled) {
+  background-color: #27ae60;
+}
+
+select {
+  padding: 10px;
+  font-size: 14px;
+  border-radius: 6px;
+  border: none;
+  outline: none;
+  background-color: #fff;
+  color: #333;
+}

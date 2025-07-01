@@ -12,24 +12,18 @@
 /* Top navigation bar */
 .navbar {
   width: 100%;
-  max-width: 1200px;
+  max-width: 1500px;
   height: 60px;
-  background-color: #fff;
+  background-color: #b3e5fc;
   margin-top: 30px;
-  border-radius: 12px;
-  box-shadow: 0 5px 10px rgba(0,0,0,0.05);
+  border-radius: 0 0 2rem 2rem;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
   display: flex;
   align-items: center;
   justify-content: space-between;
   padding: 0 30px;
 }
 
-.navbar-left span {
-  margin-right: 20px;
-  font-size: 14px;
-  cursor: pointer;
-  color: #333;
-}
 
 .navbar-center {
   font-size: 20px;
@@ -39,17 +33,17 @@
 
 .navbar-right button {
   margin-left: 15px;
-  padding: 8px 16px;
+  padding: 0.6rem 1.2rem;
   font-size: 14px;
   border: none;
   border-radius: 6px;
-  background-color: #222;
+  background-color: #0d1117;
   color: white;
   cursor: pointer;
 }
 
 .navbar-right button:hover {
-  background-color: #444;
+  background-color: #005b9f;
 }
 
 /* Main rectangle */
@@ -57,48 +51,48 @@
   width: 90%;
   max-width: 1200px;
   height: 500px;
-  background-color: white;
   margin-top: 100px;
   border-radius: 20px;
   display: flex;
   overflow: hidden;
   box-shadow: 0 12px 40px rgba(0, 0, 0, 0.1);
+  background-color: #f0f8ff;
 }
 
 /* Left side (text) */
 .about-left {
+  background-color: #b2ebf2;
+  padding: 3rem;
   flex: 1;
-  background-color: #fdf3df;
-  padding: 60px;
   display: flex;
   flex-direction: column;
   justify-content: center;
 }
 
 .about-left h1 {
-  font-size: 36px;
-  font-weight: 700;
-  color: #222;
-  margin-bottom: 20px;
+  font-size: 2rem;
+  margin-bottom: 1rem;
+  font-weight: bold;
 }
 
 .about-left p {
-  font-size: 16px;
-  color: #444;
+  font-size: 1rem;
   line-height: 1.6;
+  color: #333;
 }
 
 /* Right side (image) */
 .about-right {
   flex: 1;
-  background-color: #f8f5f0;
   display: flex;
   justify-content: center;
   align-items: center;
+  background-color: #fff;
 }
 
 .about-right img {
-  width: 100%;
-  max-width: 400px;
-  object-fit: contain;
+  max-width: 90%;
+  height: auto;
+  border-radius: 10px;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.15);
 }

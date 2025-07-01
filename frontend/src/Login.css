@@ -48,7 +48,7 @@ body, html {
 /* Titles */
 .auth-title {
   font-size: 28px;
-  color: #4a148c;
+  color: blue;
   margin-bottom: 5px;
 }
 
@@ -77,13 +77,13 @@ body, html {
 
 
 .auth-input:focus {
-  border-bottom: 2px solid #7e5bef;
+  border-bottom: 2px solid blue;
 }
 
 /* Button */
 .auth-button {
   padding: 12px;
-  background-color: #7e5bef;
+  background-color: blue;
   color: white;
   font-size: 16px;
   border: none;
@@ -93,7 +93,7 @@ body, html {
 }
 
 .auth-button:hover {
-  background-color: #5a42c3;
+  background-color:blue;
 }
 
 /* Footer link */
@@ -105,7 +105,7 @@ body, html {
 }
 
 .auth-footer a {
-  color: #7e5bef;
+  color: blue;
   text-decoration: none;
   font-size: 18px;
 }
