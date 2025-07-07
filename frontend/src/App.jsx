@@ -5,6 +5,8 @@ import LoginPage from './LoginPage';
 import RegisterPage from './RegisterPage';
 import Dashboard from './Dashboard';
 import AddUseCase from './AddUseCase';
+import UseCaseDetails from './UseCaseDetails';
+import EditUseCase from './EditUseCase';
 
 function App() {
   return (
@@ -15,6 +17,8 @@ function App() {
         <Route path="/register" element={<RegisterPage />} />
         <Route path="/dashboard" element={<Dashboard />} /> 
         <Route path="/add" element={<AddUseCase />} />
+        <Route path="/usecase/:id" element={<UseCaseDetails />} />
+        <Route path="/edit" element={<EditUseCase />} />
       </Routes>
     </Router>
   );

@@ -3,7 +3,7 @@ import axios from 'axios';
 import './Dashboard.css';
 import { useNavigate } from 'react-router-dom';
 
-function Dashboard() {
+function Dashboard({userId}) {
   const [useCases, setUseCases] = useState([]);
   const [filters, setFilters] = useState({
     lifecycle_stage: '',
@@ -66,7 +66,7 @@ function Dashboard() {
             <div
               key={uc.id}
               className="usecase-card"
-              onClick={() => navigate(`/usecase/${uc.id}`)}
+              onClick={() => navigate(`/usecase/${uc.use_case_id}`)}
             >
               <div className="card-title">{uc.title}</div>
               <div className="card-description">

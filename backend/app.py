@@ -85,10 +85,14 @@ def login():
 
 @app.route('/usecases', methods=['GET'])
 def get_all_usecases():
+    user_id = request.args.get('user_id')
     try:
         conn = get_db_connection()
         cursor = conn.cursor(dictionary=True)
-        cursor.execute("SELECT * FROM use_cases")
+        if user_id:
+            cursor.execute("SELECT * FROM use_cases WHERE user_id = %s", (user_id,))
+        else:
+            cursor.execute("SELECT * FROM use_cases")
         result = cursor.fetchall()
         return jsonify(result), 200
     except Error as e:
@@ -97,12 +101,13 @@ def get_all_usecases():
         cursor.close()
         conn.close()
 
+
 @app.route('/usecases/<int:id>', methods=['GET'])
 def get_usecase_by_id(id):
     try:
         conn = get_db_connection()
         cursor = conn.cursor(dictionary=True)
-        cursor.execute("SELECT * FROM use_cases WHERE id = %s", (id,))
+        cursor.execute("SELECT * FROM use_cases WHERE use_case_id = %s", (id,))
         result = cursor.fetchone()
         if result:
             return jsonify(result), 200

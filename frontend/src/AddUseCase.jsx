@@ -81,8 +81,8 @@ function AddUseCase() {
                 <option value="Low">Low</option>
                 <option value="Medium">Medium</option>
                 <option value="High">High</option>
-                </select>
-            </div>
+            </select>
+          </div>
           </div>
 
           {/* Row 3 */}
@@ -121,8 +121,8 @@ function AddUseCase() {
           </div>
 
           <button type="submit" disabled={!isValid}>Submit</button>
-        </form>
-      </div>
+      </form>
+    </div>
     </div>
   );
 }
