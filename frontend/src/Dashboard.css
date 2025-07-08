@@ -113,3 +113,59 @@ body, html, #root {
   line-height: 1.5;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
+
+.card-actions {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 10px;
+}
+
+.card-actions button {
+  background-color: #0047ab;
+  color: white;
+  border: none;
+  padding: 5px 10px;
+  cursor: pointer;
+  border-radius: 4px;
+}
+
+.card-actions button:hover {
+  background-color: #002f73;
+}
+
+.card-buttons {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  display: none;
+  gap: 6px;
+}
+
+.usecase-card:hover .card-buttons {
+  display: flex;
+  color: #0056b3;
+}
+
+.card-buttons button {
+  background-color: red;
+  color: white;
+  border: none;
+  padding: 4px 10px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 0.7rem;
+  transition: background-color 0.2s ease;
+  margin-left: 4px;
+}
+
+.card-buttons .edit-btn {
+  background-color: #4caf50;
+}
+
+.card-buttons .edit-btn:hover {
+  background-color: #388e3c;
+}
+
+.card-buttons .delete-btn:hover {
+  background-color: #d32f2f;
+}

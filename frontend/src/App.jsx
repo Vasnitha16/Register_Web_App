@@ -18,7 +18,7 @@ function App() {
         <Route path="/dashboard" element={<Dashboard />} /> 
         <Route path="/add" element={<AddUseCase />} />
         <Route path="/usecase/:id" element={<UseCaseDetails />} />
-        <Route path="/edit" element={<EditUseCase />} />
+        <Route path="/edit/:id" element={<EditUseCase />} />
       </Routes>
     </Router>
   );
