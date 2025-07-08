@@ -2,7 +2,7 @@
 import React, { useEffect, useState } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import axios from 'axios';
-import './UseCaseDetails.css'; // optional for styling
+import './UseCaseDetails.css';
 
 function UseCaseDetails() {
   const { id } = useParams();
