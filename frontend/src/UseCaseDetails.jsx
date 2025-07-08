@@ -18,8 +18,10 @@ function UseCaseDetails() {
   if (!useCase) return <div>Loading...</div>;
 
   return (
-    <div className="usecase-detail-container">
-      <button onClick={() => navigate(-1)}>⬅ Back</button>
+  <div className="page-container">
+    <button className="back-button" onClick={() => navigate(-1)}>⬅ Back</button>
+
+    <div className="details-container">
       <h2>{useCase.title}</h2>
       <p><strong>Description:</strong> {useCase.description}</p>
       <p><strong>Business Owner:</strong> {useCase.business_owner}</p>
@@ -33,7 +35,9 @@ function UseCaseDetails() {
       <p><strong>Model Details:</strong></p>
       <div dangerouslySetInnerHTML={{ __html: useCase.model_details }} />
     </div>
+  </div>
   );
+  
 }
 
 export default UseCaseDetails;
