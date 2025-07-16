@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import './Dashboard.css';
 import { useNavigate } from 'react-router-dom';
+import { CSVLink } from "react-csv";
 
 function Dashboard() {
   const [useCases, setUseCases] = useState([]);
@@ -13,9 +14,9 @@ function Dashboard() {
   const navigate = useNavigate();
 
   useEffect(() => {
-    axios.get('http://localhost:5000/usecases').then((res) => {
-      setUseCases(res.data);
-    });
+    axios.get('http://localhost:5000/usecases')
+      .then((res) => setUseCases(res.data))
+      .catch((err) => console.error("Error fetching use cases", err));
   }, []);
 
   const filtered = useCases.filter((uc) =>
@@ -35,6 +36,21 @@ function Dashboard() {
     }
   };
 
+  // Optional: customize export CSV headers
+  const csvHeaders = [
+    { label: "Title", key: "title" },
+    { label: "Description", key: "description" },
+    { label: "Business Owner", key: "business_owner" },
+    { label: "AI Model", key: "ai_model_name" },
+    { label: "Category", key: "use_case_category" },
+    { label: "Business Area", key: "business_area" },
+    { label: "Risk", key: "risk_category" },
+    { label: "Stage", key: "lifecycle_stage" },
+    { label: "KPIs", key: "kpis_impacted" },
+    { label: "Benefits", key: "expected_benefits" },
+    { label: "Model Details", key: "model_details" }
+  ];
+
   return (
     <div className="dashboard-container">
       {/* HEADER */}
@@ -42,6 +58,14 @@ function Dashboard() {
         <h2 className="dashboard-title">Dashboard</h2>
         <div className="dashboard-actions">
           <button onClick={() => navigate('/add')}>Add</button>
+          <CSVLink
+            data={filtered}
+            headers={csvHeaders}
+            filename={"use_cases_export.csv"}
+            className="btn"
+          >
+            Export data to CSV
+          </CSVLink>
         </div>
       </div>
 
@@ -68,25 +92,42 @@ function Dashboard() {
 
         {/* CARD GRID */}
         <div className="usecase-grid">
-          {filtered.map((uc) => (
-            <div key={uc.use_case_id} className="usecase-card">
-              {/* Hover Buttons */}
-              <div className="card-buttons">
-                <button className="edit-btn" onClick={() => navigate(`/edit/${uc.use_case_id}`)}>Edit</button>
-                <button className="delete-btn" onClick={() => handleDelete(uc.use_case_id)}>Delete</button>
-              </div>
+          {filtered.length === 0 ? (
+            <p>No use cases found.</p>
+          ) : (
+            filtered.map((uc) => (
+              <div key={uc.use_case_id} className="usecase-card">
+                {/* Hover Buttons */}
+                <div className="card-buttons">
+                  <button
+                    className="edit-btn"
+                    onClick={() => navigate(`/edit/${uc.use_case_id}`)}
+                  >
+                    Edit
+                  </button>
+                  <button
+                    className="delete-btn"
+                    onClick={() => handleDelete(uc.use_case_id)}
+                  >
+                    Delete
+                  </button>
+                </div>
 
-              {/* Card Content */}
-              <div onClick={() => navigate(`/usecase/${uc.use_case_id}`)} className="card-content">
-                <div className="card-title">{uc.title}</div>
-                <div className="card-description">
-                  {uc.description.includes('.')
-                    ? uc.description.slice(0, uc.description.indexOf('.') + 1)
-                    : uc.description}
+                {/* Card Content */}
+                <div
+                  onClick={() => navigate(`/usecase/${uc.use_case_id}`)}
+                  className="card-content"
+                >
+                  <div className="card-title">{uc.title}</div>
+                  <div className="card-description">
+                    {uc.description.includes('.')
+                      ? uc.description.slice(0, uc.description.indexOf('.') + 1)
+                      : uc.description}
+                  </div>
                 </div>
               </div>
-            </div>
-          ))}
+            ))
+          )}
         </div>
       </div>
     </div>
