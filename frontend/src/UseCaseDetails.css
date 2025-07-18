@@ -1,29 +1,149 @@
-.page-container {
+body {
+  margin: 0;
+  font-family: 'Segoe UI', sans-serif;
+  background-color: #1f1f1f;
+  color: #fff;
+}
+
+.model-card-page-wrapper {
   padding: 2rem;
 }
 
-.back-button {
-  position: absolute;
-  top: 20px;
-  left: 20px;
-  padding: 0.5rem 1rem;
-  background: #1976d2;
+.model-card-header-area {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 2rem;
+}
+
+.model-card-title-section h1 {
   color: white;
+  font-size: 2.5rem;
+}
+
+.model-card-back-btn button {
+  padding: 0.5rem 1rem;
+  background-color: #444;
   border: none;
-  border-radius: 6px;
+  color: white;
+  border-radius: 0.5rem;
   cursor: pointer;
+}
+
+.model-card-content-area {
+  display: flex;
+  justify-content: center;
+}
+
+.model-card-container {
+  background-color:rgb(252, 252, 253);
+  color: black;
+  padding: 2rem;
+  max-width: 1400px;
+  width: 200%;
+  border-radius: 1rem;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+}
+
+.model-card-section-header h2 {
+  font-size: 2rem;
+  margin-bottom: 0.25rem;
+}
+
+.model-category {
+  font-style: italic;
+  color: #555;
+  margin-bottom: 2rem;
+}
+
+.model-card-section {
+  margin-bottom: 2rem;
+}
+
+.section-content-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.5rem;
+}
+
+.key-info-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.5rem;
+}
+
+.key-info-card {
+  background-color: #f9f9f9;
+  padding: 1rem;
+  border-radius: 0.5rem;
+  color: black;
+}
+
+.description-text {
+  margin-bottom: 1rem;
+}
+
+.model-details-raw-content {
+  background-color: #f9f9f9;
+  padding: 1rem;
+  border-radius: 0.5rem;
+  color: #333;
+}
+
+.risk-badge {
+  display: inline-block;
+  padding: 0.2rem 0.6rem;
+  border-radius: 0.4rem;
   font-weight: bold;
 }
 
-.back-button:hover {
-  background: #125ea7;
+.risk-badge.low {
+  background-color: #1dd181;
+  color: black;
 }
 
-.details-container {
-  margin-top: 4rem;
-  padding: 2rem;
-  max-width: 800px;
-  margin-left: auto;
-  margin-right: auto;
+.risk-badge.medium {
+  background-color: #fbbf24;
   color: black;
+}
+
+.risk-badge.high {
+  background-color: #ef4444;
+  color: white;
+}
+
+.back-btn {
+  font-size: 14px; /* smaller text */
+  padding: 4px 8px; /* less padding */
+  margin: 8px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.back-btn svg {
+  width: 14px;
+  height: 14px;
+}
+
+body {
+  margin: 0;
+  font-family: 'Segoe UI', sans-serif;
+  background-color: #1f1f1f;
+  color: #fff;
+  overflow: hidden; /* Remove scrollbar from body */
+  height: 100vh;
+}
+
+/* Enable scrolling within the use case wrapper */
+.model-card-page-wrapper {
+  height: 100vh;
+  overflow-y: auto;
+  padding: 2rem;
+  scrollbar-width: none; /* Firefox */
+}
+
+/* Chrome, Safari and Edge */
+.model-card-page-wrapper::-webkit-scrollbar {
+  display: none;
 }

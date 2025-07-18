@@ -9,7 +9,7 @@ function AboutPage() {
   return (
     <div className="about-page">
       <div className="navbar">
-        <div className="navbar-center">AIforU</div>
+        <div className="navbar-center">AI Model Catalog</div>
         <div className="navbar-right">
           <button onClick={() => navigate('/login')}>Login</button>
           <button onClick={() => navigate('/register')}>Get Started</button>
@@ -20,7 +20,7 @@ function AboutPage() {
         <div className="about-left">
           <h1>ABOUT US</h1>
           <p>
-            Welcome to AIforU a modern and secure user registration platform designed to simplify how users sign up and manage their profiles.
+            Welcome to AI Model Catalog a modern and secure user registration platform designed to simplify how users sign up and manage their profiles.
           </p>
         </div>
         <div className="about-right">

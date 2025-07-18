@@ -1,13 +1,21 @@
 /* Reset */
-body, html, #root {
+* {
+  box-sizing: border-box;
+}
+
+html, body, #root {
   margin: 0;
   padding: 0;
+  height: 100%;
+  overflow: auto;
 }
 
 /* Container */
 .dashboard-container {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
   font-family: Arial, sans-serif;
-  
 }
 
 /* Header Box */
@@ -17,13 +25,12 @@ body, html, #root {
   left: 0;
   right: 0;
   z-index: 100;
-  background-color: #eef2f7;
+  background-color: #d6dce2;
   padding: 20px 40px;
   display: flex;
   justify-content: space-between;
   align-items: center;
   box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.1);
-  background-color: #d6dce2;
 }
 
 /* Title */
@@ -52,9 +59,8 @@ body, html, #root {
 
 /* Main content with padding below fixed header */
 .dashboard-content {
-  padding-top: 100px;
-  padding-left: 40px;
-  padding-right: 40px;
+  margin-top: 100px;
+  padding: 0 40px 40px;
 }
 
 /* Filters aligned right */
@@ -92,6 +98,7 @@ body, html, #root {
   cursor: pointer;
   min-height: 160px;
   border-left: 5px solid #007bff;
+  position: relative;
 }
 
 .usecase-card:hover {
@@ -143,7 +150,6 @@ body, html, #root {
 
 .usecase-card:hover .card-buttons {
   display: flex;
-  color: #0056b3;
 }
 
 .card-buttons button {
@@ -179,15 +185,11 @@ body, html, #root {
   border-radius: 6px;
   font-weight: 600;
   cursor: pointer;
-}
-
-.btn button:hover {
-  background-color: #0056b3;
-}
-
-button, .btn {
   display: inline-flex;
   align-items: center;
   gap: 6px;
-  font-weight: 500;
+}
+
+.btn:hover {
+  background-color: #0056b3;
 }

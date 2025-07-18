@@ -177,5 +177,37 @@ def update_use_case(use_case_id):
     conn.close()
     return jsonify({'message': 'Use case updated'})
 
+@app.route('/usecases/bulk', methods=['POST'])
+def bulk_upload():
+    data = request.get_json()
+    if not data:
+        return jsonify({"error": "No data"}), 400
+
+    conn = get_db_connection()
+    cursor = conn.cursor()
+
+    insert_query = """
+        INSERT INTO use_cases 
+        (title, description, business_owner, ai_model_name, use_case_category, business_area, risk_category, lifecycle_stage, kpis_impacted, expected_benefits, model_details, user_id)
+        VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)
+    """
+
+    inserted = []
+    for uc in data:
+        cursor.execute(insert_query, (
+            uc.get('title'), uc.get('description'), uc.get('business_owner'),
+            uc.get('ai_model_name'), uc.get('use_case_category'), uc.get('business_area'),
+            uc.get('risk_category'), uc.get('lifecycle_stage'), uc.get('kpis_impacted'),
+            uc.get('expected_benefits'), uc.get('model_details'),
+            1  # 👈 static user_id or use uc.get('user_id') if present
+        ))
+        inserted.append(cursor.lastrowid)
+
+    conn.commit()
+    cursor.close()
+    conn.close()
+
+    return jsonify({"message": "Bulk upload successful", "inserted_ids": inserted}), 200
+
 if __name__ == '__main__':
     app.run(debug=True)
