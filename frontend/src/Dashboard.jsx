@@ -3,6 +3,8 @@ import axios from 'axios';
 import './Dashboard.css';
 import { useNavigate } from 'react-router-dom';
 import { CSVLink } from "react-csv";
+import { Plus, Edit, Trash, FileDown } from 'lucide-react';
+import { LayoutDashboard } from 'lucide-react';
 
 function Dashboard() {
   const [useCases, setUseCases] = useState([]);
@@ -55,16 +57,21 @@ function Dashboard() {
     <div className="dashboard-container">
       {/* HEADER */}
       <div className="dashboard-header-box">
-        <h2 className="dashboard-title">Dashboard</h2>
+        <h2 className="dashboard-title" style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+  <LayoutDashboard size={24} />
+  Dashboard
+</h2>
         <div className="dashboard-actions">
-          <button onClick={() => navigate('/add')}>Add</button>
+          <button onClick={() => navigate('/add')}>
+          <Plus size={16} style={{ marginRight: '6px' }} />Add </button>
           <CSVLink
             data={filtered}
             headers={csvHeaders}
             filename={"use_cases_export.csv"}
             className="btn"
           >
-            Export data to CSV
+          <FileDown size={16} style={{ marginRight: '6px' }} />
+          Export CSV
           </CSVLink>
         </div>
       </div>
@@ -99,18 +106,16 @@ function Dashboard() {
               <div key={uc.use_case_id} className="usecase-card">
                 {/* Hover Buttons */}
                 <div className="card-buttons">
+                  <button className="edit-btn"
+                  onClick={() => navigate(`/edit/${uc.use_case_id}`)} >
+                  <Edit size={14} style={{ marginRight: '4px' }} /> Edit </button>
                   <button
-                    className="edit-btn"
-                    onClick={() => navigate(`/edit/${uc.use_case_id}`)}
-                  >
-                    Edit
-                  </button>
-                  <button
-                    className="delete-btn"
-                    onClick={() => handleDelete(uc.use_case_id)}
-                  >
-                    Delete
-                  </button>
+  className="delete-btn"
+  onClick={() => handleDelete(uc.use_case_id)}
+>
+  <Trash size={14} style={{ marginRight: '4px' }} />
+  Delete
+</button>
                 </div>
 
                 {/* Card Content */}

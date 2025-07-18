@@ -150,7 +150,7 @@ body, html, #root {
   background-color: red;
   color: white;
   border: none;
-  padding: 4px 10px;
+  padding: 1px 4px;
   border-radius: 6px;
   cursor: pointer;
   font-size: 0.7rem;
@@ -183,4 +183,11 @@ body, html, #root {
 
 .btn button:hover {
   background-color: #0056b3;
+}
+
+button, .btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-weight: 500;
 }
