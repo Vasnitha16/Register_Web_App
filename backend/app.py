@@ -209,5 +209,24 @@ def bulk_upload():
 
     return jsonify({"message": "Bulk upload successful", "inserted_ids": inserted}), 200
 
+@app.route('/model-accuracy/<int:use_case_id>', methods=['GET'])
+def get_model_accuracy(use_case_id):
+    conn = get_db_connection()
+    cursor = conn.cursor(dictionary=True)
+
+    query = """
+        SELECT date, accuracy
+        FROM model_accuracy
+        WHERE use_case_id = %s
+          AND date >= CURDATE() - INTERVAL 3 MONTH
+        ORDER BY date ASC
+    """
+    cursor.execute(query, (use_case_id,))
+    results = cursor.fetchall()
+
+    cursor.close()
+    conn.close()
+    return jsonify(results)
+
 if __name__ == '__main__':
     app.run(debug=True)

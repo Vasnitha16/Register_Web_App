@@ -26,35 +26,37 @@ function LoginPage() {
   };
 
   return (
-    <div className="auth-wrapper">
-      <div className="auth-left">
-        <img src={illustration} alt="Login" />
-      </div>
-      <div className="auth-right">
-        <h2 className="auth-title">Hello!</h2>
-        <p className="auth-subtitle">Good Morning</p>
-        <form className="auth-form" onSubmit={handleLogin}>
-          <input
-            className="auth-input"
-            type="text"
-            placeholder="Username"
-            value={username}
-            onChange={(e) => setUsername(e.target.value)}
-            required
-          />
-          <input
-            className="auth-input"
-            type="password"
-            placeholder="Password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-            required
-          />
-          <button type="submit" className="auth-button">Login</button>
-        </form>
-        <p className="auth-message">{message}</p>
-        <div className="auth-footer">
-          Don’t have an account? <a href="/register">Create Account</a>
+    <div className="auth-container">
+      <div className="auth-wrapper">
+        <div className="auth-left">
+          <img src={illustration} alt="Login" />
+        </div>
+        <div className="auth-right">
+          <h2 className="auth-title">Hello!</h2>
+          <p className="auth-subtitle">Good Morning</p>
+          <form className="auth-form" onSubmit={handleLogin}>
+            <input
+              className="auth-input"
+              type="text"
+              placeholder="Username"
+              value={username}
+              onChange={(e) => setUsername(e.target.value)}
+              required
+            />
+            <input
+              className="auth-input"
+              type="password"
+              placeholder="Password"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+              required
+            />
+            <button type="submit" className="auth-button">Login</button>
+          </form>
+          <p className="auth-message">{message}</p>
+          <div className="auth-footer">
+            Don’t have an account? <a href="/register">Create Account</a>
+          </div>
         </div>
       </div>
     </div>

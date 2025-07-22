@@ -1,10 +1,17 @@
-body, html {
+html, body {
   margin: 0;
   padding: 0;
-  height: 100vh;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   background: url('./assets/background.jpeg') no-repeat center center fixed;
   background-size: cover;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.auth-container {
+  height: 100vh;
   display: flex;
   align-items: center;
   justify-content: center;

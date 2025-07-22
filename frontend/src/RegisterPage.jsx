@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
-import './Login.css';
+import './Login.css'; // Using same styles
 import illustration from './assets/Login.png'; 
 
 function RegisterPage() {
@@ -26,35 +26,37 @@ function RegisterPage() {
   };
 
   return (
-    <div className="auth-wrapper">
-      <div className="auth-left">
-        <img src={illustration} alt="Illustration" />
-      </div>
-      <div className="auth-right">
-        <h2 className="auth-title">Welcome!</h2>
-        <p className="auth-subtitle">Create your account</p>
-        <form onSubmit={handleRegister} className="auth-form">
-          <input
-            className="auth-input"
-            type="text"
-            placeholder="Username"
-            value={username}
-            onChange={(e) => setUsername(e.target.value)}
-            required
-          />
-          <input
-            className="auth-input"
-            type="password"
-            placeholder="Password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-            required
-          />
-          <button type="submit" className="auth-button">Register</button>
-        </form>
-        <p className="auth-message">{message}</p>
-        <div className="auth-footer">
-          Already have an Account!! <a href="/login">Login</a>
+    <div className="auth-container">
+      <div className="auth-wrapper">
+        <div className="auth-left">
+          <img src={illustration} alt="Illustration" />
+        </div>
+        <div className="auth-right">
+          <h2 className="auth-title">Welcome!</h2>
+          <p className="auth-subtitle">Create your account</p>
+          <form onSubmit={handleRegister} className="auth-form">
+            <input
+              className="auth-input"
+              type="text"
+              placeholder="Username"
+              value={username}
+              onChange={(e) => setUsername(e.target.value)}
+              required
+            />
+            <input
+              className="auth-input"
+              type="password"
+              placeholder="Password"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+              required
+            />
+            <button type="submit" className="auth-button">Register</button>
+          </form>
+          <p className="auth-message">{message}</p>
+          <div className="auth-footer">
+            Already have an account? <a href="/login">Login</a>
+          </div>
         </div>
       </div>
     </div>
