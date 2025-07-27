@@ -94,7 +94,7 @@ function Dashboard() {
     <div className="dashboard-container">
       <div className="dashboard-header-box">
         <h2 className="dashboard-title" style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
-          <LayoutDashboard size={24} /> Dashboard
+          <LayoutDashboard size={24} /> Model Dashboard
         </h2>
         <div className="dashboard-actions">
           <button onClick={() => navigate('/add')}>
